@@ -11,7 +11,7 @@ $trash.forEach(el => {
   $restore.addEventListener('click', () => {
     // 복구
     axios
-        .patch(`http://3.39.248.143:8080/@${username}/book/restore/${bookId}`)
+        .patch(`http://3.35.14.80:8080/@${username}/book/restore/${bookId}`)
         .then((response) => {
           const data = response.data;
         })
@@ -19,7 +19,7 @@ $trash.forEach(el => {
           console.error(error);
         });
     axios
-        .patch(`http://3.39.248.143:8080/@${username}/doc/restore/${docId}`)
+        .patch(`http://3.35.14.80:8080/@${username}/doc/restore/${docId}`)
         .then((response) => {
           const data = response.data;
         })
@@ -32,7 +32,7 @@ $trash.forEach(el => {
   $delete.addEventListener('click', () => {
     // 완전 삭제
     axios
-        .delete(`http://3.39.248.143:8080/@${username}/doc/${docId}`)
+        .delete(`http://3.35.14.80:8080/@${username}/doc/${docId}`)
         .then((response) => {
           const data = response.data;
         })

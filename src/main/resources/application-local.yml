@@ -4,3 +4,7 @@ spring:
     url: jdbc:h2:tcp://localhost/~/doqmt
     username: sa
     password:
+
+  jpa:
+    hibernate:
+      ddl-auto: create
