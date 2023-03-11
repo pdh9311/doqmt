@@ -163,7 +163,7 @@ $changePwBtn.addEventListener('click', () => {
       changePw.result[1] === true &&
       changePw.result[2] === true) {
     axios
-        .patch(`http://localhost:8080/@${username}/password/${memberId}`, {
+        .patch(`http://3.39.248.143:8080/@${username}/password/${memberId}`, {
           currentPw: changePw.currentPw,
           newPw: changePw.newPw,
           againPw: changePw.againPw,
@@ -174,7 +174,7 @@ $changePwBtn.addEventListener('click', () => {
             $incorrect.style.display = 'flex';
           } else {
             // 로그 아웃됨.
-            location.href = 'http://localhost:8080';
+            location.href = 'http://3.39.248.143:8080';
           }
         })
         .catch((error) => {

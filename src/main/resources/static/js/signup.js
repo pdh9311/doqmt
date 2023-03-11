@@ -64,7 +64,7 @@ $usernameInput.addEventListener("focusout", () => {
     $usernameBox.classList.remove("border-black");
   }
   axios
-    .post("http://localhost:8080/signup/check-username", {
+    .post("http://3.39.248.143:8080/signup/check-username", {
       username: $usernameInput.value,
     })
     .then((response) => {
@@ -115,7 +115,7 @@ $emailInput.addEventListener("focusout", () => {
     $emailBox.classList.remove("border-black");
   }
   axios
-    .post("http://localhost:8080/signup/check-email", {
+    .post("http://3.39.248.143:8080/signup/check-email", {
       email: $emailInput.value,
     })
     .then((response) => {
@@ -224,7 +224,7 @@ $emailSendBtn.addEventListener("click", (e) => {
     $emailCheckBox.style.display = "flex";
 
     axios
-      .post("http://localhost:8080/signup/auth-email", {
+      .post("http://3.39.248.143:8080/signup/auth-email", {
         email: $emailInput.value,
       })
       .then((response) => {
