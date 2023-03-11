@@ -1,0 +1,101 @@
+.user-box {
+  position: absolute;
+  top: 15px;
+  right: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  width: 151px;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.user-box:hover {
+  background-color: #f5f5f5;
+}
+
+.user-box > img {
+  width: 32px;
+  height: 32px;
+  border-radius: 19px;
+  border: 3px solid #dadada;
+}
+
+.username {
+  width: 60%;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.user-box:hover {
+  cursor: pointer;
+}
+
+.user-click-box {
+  z-index: 1;
+  position: absolute;
+  top: 69px;
+  right: 50px;
+  display: none;
+  /*display: flex;*/
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 5px;
+  padding: 10px;
+  width: 150px;
+  height: 106px;
+  border: 1px solid #F1F1F1;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background-color: white;
+}
+
+.user-click-box > a:nth-child(1) {
+  color: #5E5E5E;
+}
+
+.user-click-box > a:nth-child(2) {
+  color: #2779d0;
+}
+
+.user-click-box > .trashBtn {
+  color: #FF9900;
+}
+
+.user-click-box > .signout {
+  color: #FF4A5C;
+}
+/***********************************************/
+nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 70px;
+  /*border-bottom: 1px solid #E0E0E0;*/
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 0 80px;
+}
+
+.sign {
+  list-style: none;
+}
+
+.sign > li {
+  display: inline-block;
+}
+
+.sign > li > a {
+  color: white;
+  display: inline-block;
+  width: 160px;
+  height: 36px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: black;
+  font-size: 16px;
+  line-height: 36px;
+}

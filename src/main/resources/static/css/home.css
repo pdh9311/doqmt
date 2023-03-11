@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+}
+
+.big-logo-box {
+  align-self: center;
+  flex-grow: 1;
+  width: 40%;
+  height: 40%;
+  display: flex;
+}
+
+.big-logo {
+  align-self: center;
+  width: 100%;
+}
+
+.go-member:hover {
+  cursor: pointer;
+}
+
+.document {
+  position: absolute;
+  right: 50px;
+  bottom: 50px;
+  font-size: 48px;
+  font-weight: bold;
+}

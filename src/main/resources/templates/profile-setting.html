@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>DOQMT - account setting</title>
+  <link rel="stylesheet" href="/css/default.css">
+  <link rel="stylesheet" href="/css/profile-setting.css">
+  <link rel="stylesheet" href="/css/success-fail.css">
+  <link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+<div class="container">
+  <th:block th:replace="~{fragment/user::user}"></th:block>
+
+  <div class="account-info-box">
+
+    <div class="profile-image">
+      <img class="user-face" th:if="${member.profileImage == null}" src="/img/user.svg" alt="사용자 프로필 이미지">
+      <img class="user-face" th:if="${member.profileImage != null}" th:src="@{${member.profileImage}}" alt="사용자 프로필 이미지">
+      <div class="profile-edit">
+        <input id="profile-file" type="file" style="display: none">
+        <label for="profile-file">
+          <img src="/img/camera.svg" alt="프로필 수정 버튼">
+        </label>
+      </div>
+    </div>
+
+    <div class="account-info">
+      <strong th:text="${member.username}">Username</strong>
+      <span th:text="${member.email}">example@gmail.com</span>
+      <div class="joined-date">
+        <img src="/img/clock.svg" alt="사용자 가입일">
+        <span th:text="${'joined '+ #temporals.format(member.createdTime, 'MMM dd, yyyy')}">May 14, 2021</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="change-username-box">
+    <strong>Change Username</strong>
+    <div class="new-username-box">
+      <input type="text" placeholder="Enter the new username.">
+      <button class="username-check">Check</button>
+    </div>
+    <span class="username-check-result"></span>
+    <button class="change-username-btn">Change</button>
+  </div>
+
+  <div class="change-password-box">
+    <strong>Change Password</strong>
+    <div class="incorrect">
+      <img src="/img/circle-exclamation.svg" alt="에러 이미지">
+      <p>Current password is incorrect</p>
+    </div>
+    <div class="current-pw-box">
+      <input id="current-pw" class="border-gray" type="password">
+      <label class="input-label" for="current-pw">Current password</label>
+      <span class="current-pw-status font-fail"></span>
+    </div>
+    <div class="new-pw-box">
+      <input id="new-pw" class="border-gray" type="password">
+      <label class="input-label" for="new-pw">New password</label>
+      <span class="new-pw-status font-fail"></span>
+    </div>
+    <div class="again-pw-box">
+      <input id="again-pw" class="border-gray" type="password">
+      <label class="input-label" for="again-pw">New password(again)</label>
+      <span class="again-pw-status font-fail"></span>
+    </div>
+    <button class="change-password-btn">Change</button>
+  </div>
+
+</div>
+<script th:inline="javascript">
+  const memberId = [[${member.id}]];
+  const username = [[${member.username}]];
+</script>
+<script src="/js/user.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/profile-image.js"></script>
+<script src="/js/change-username.js"></script>
+<script src="/js/change-password.js"></script>
+</body>
+</html>

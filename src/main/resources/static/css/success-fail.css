@@ -1,0 +1,16 @@
+.border-fail {
+  border-color: #dc3545;
+}
+
+.border-success {
+  border-color: #1cb36d;
+}
+
+.font-fail {
+  color: #dc3545;
+}
+
+.font-success {
+  /*color: #198754;*/
+  color: #1cb36d;
+}

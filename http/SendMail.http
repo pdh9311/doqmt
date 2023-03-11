@@ -1,0 +1,12 @@
+### 1. 메일 전송
+POST http://localhost:8080/send-email
+Content-Type: application/json
+
+{
+  "to" : "pdh6381@naver.com",
+  "subject" : "This is a test subject",
+  "message" : "This is a test message"
+}
+
+
+

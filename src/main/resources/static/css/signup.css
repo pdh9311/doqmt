@@ -1,0 +1,235 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  border-bottom: 1px solid #E0E0E0;
+  padding: 0 80px;
+}
+
+.small-logo {
+  width: 50px;
+  height: 50px;
+}
+
+.sign-btn {
+  display: inline-block;
+  width: 160px;
+  height: 36px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: black;
+  font-size: 16px;
+  line-height: 36px;
+  color: white;
+}
+.container > a {
+  align-self: center;
+  margin: 60px 0;
+}
+
+form {
+  align-self: center;
+}
+
+
+.join-outer-box {
+  width: 500px;
+  height: 500px;
+  border: 1px solid transparent;
+  border-image: linear-gradient(to bottom, black, white);
+  border-radius: 10px;
+  background-image: linear-gradient(#fff, #fff),
+  linear-gradient(145deg, #000 -25%, #fff 105%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+/**************************************************/
+
+.join-inner-box {
+  padding: 40px;
+  width: 420px;
+  height: 420px;
+  /*background-color: rgba(167, 192, 232, 0.55);*/
+}
+.join-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /*background-color: #bbbec2;*/
+}
+/**************************************************/
+
+.join-box > span {
+  display: block;
+  margin: 14px 0 35px 0;
+}
+
+.join-box > span > a {
+  color: #128CE4;
+}
+
+/**************************************************/
+.username-box,
+.email-box,
+.password-box {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  border: 1px solid #A8A8A8;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  margin: 37px 0;
+}
+
+.email-check-box {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  border: 1px solid #A8A8A8;
+  border-radius: 5px;
+  display: none;
+  align-items: center;
+  margin: 37px 0;
+}
+
+
+.username-box > input,
+.email-box > input,
+.email-check-box > input,
+.password-box > input{
+  width: 100%;
+  height: 22px;
+  margin: 0 10px;
+  border: none;
+  /*background-color: #d0727a;*/
+}
+
+.username-box > input:focus,
+.email-box > input:focus,
+.email-check-box > input:focus,
+.password-box > input:focus {
+  outline: none;
+}
+
+/**************************************************/
+.email-box > button,
+.email-check-box > button {
+  background-color: #efefef;
+  border: none;
+  height: 100%;
+  padding: 0 10px;
+  border-radius: 0 5px 5px 0;
+}
+
+.email-box > button:hover,
+.email-check-box > button:hover,
+.password-box > button:hover {
+  background-color: #A8A8A8;
+  cursor: pointer;
+}
+
+/**************************************************/
+.password-box > button {
+  background-color: #efefef;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 10px;
+  border: none;
+  border-radius: 0 5px 5px 0;
+}
+.password-box > button > img {
+  width: 15px;
+  height: 14px;
+}
+/**************************************************/
+.signup-btn {
+  display: block;
+  width: 100%;
+  background-color: #F2F2F2;
+  border:none;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+}
+/**************************************************/
+
+.username-status,
+.email-status,
+.email-check-status,
+.password-status {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translate(0, 100%);
+  font-size: 12px;
+}
+
+/**************************************************/
+
+.input-label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  padding: 0 3px;
+  font-size: 16px;
+  color: #CCCCCC;
+  background-color: white;
+  transform: translate(0, -50%);
+  transition: all 0.2s ease-in;
+  border-radius: 5px;
+}
+
+/******************************************************/
+
+.label-move {
+  transform: scale(0.75) translate(-17%, -180%);
+  color: black;
+}
+
+.border-black {
+  border-color: black;
+}
+
+.display-none {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

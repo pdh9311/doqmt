@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>DOQMT - trash</title>
+  <link rel="stylesheet" href="/css/default.css">
+  <link rel="stylesheet" href="/css/trash.css">
+  <link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+<div class="container">
+  <th:block th:replace="~{fragment/user::user}"></th:block>
+
+  <div class="trash-outer-box">
+
+    <div class="subject">
+      <img src="/img/trash.svg" alt="휴지통">
+      <h1>Trash</h1>
+    </div>
+
+    <section class="trash-box">
+
+      <div class="trash" th:each="doc : ${docs}">
+        <div class="book">
+          <img src="/img/book.svg" alt="카테고리 이미지">
+          <span th:text="${doc.bookName}">Java</span>
+        </div>
+        <span>/</span>
+        <div class="document">
+          <img src="/img/page.svg" alt="문서 이미지">
+          <span th:text="${doc.docTitle}">Enum (열거형)</span>
+        </div>
+        <img class="restore" src="/img/reply.svg" alt="복구">
+        <img src="/img/calendar-days.svg" alt="달력 이미지">
+        <span th:text="${#temporals.format(doc.deletedTime, 'yyyy-MM-dd HH:mm:ss')}">2023.02.25 03:44:33</span>
+        <img class="delete" src="/img/bomb.svg" alt="완전삭제">
+        <input type="hidden" th:value="${doc.bookId}">
+        <input type="hidden" th:value="${doc.docId}">
+      </div>
+
+    </section>
+
+    <div class="page">
+      <ul>
+        <li th:if="${pg.isPrev()}"><a th:href="@{/@{username}/trash(username=${username}, page=${pg.prevPage})}">&lt;</a></li>
+        <th:block th:each="num: ${#numbers.sequence(pg.frontPage, pg.endPage)}">
+          <li class="currPage" th:if="${num == pg.currPage}" th:text="${num}"></li>
+          <li th:if="${num != pg.currPage}" class="remainPage">
+            <a class="remainPage" th:href="@{/@{username}/trash(username=${username}, page=${num})}" th:text="${num}"></a>
+          </li>
+        </th:block>
+        <li th:if="${pg.isNext()}"><a th:href="@{/@{username}/trash(username=${username}, page=${pg.nextPage})}">&gt;</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script th:inline="javascript">
+  const username = [[${member.username}]];
+</script>
+<script src="/js/user.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/trash.js"></script>
+</body>
+</html>

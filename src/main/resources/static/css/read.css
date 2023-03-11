@@ -1,0 +1,60 @@
+.container {
+  width: 100%;
+  /*background-color: #cff4fc;*/
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.read-box {
+  position: relative;
+  box-sizing: border-box;
+  padding: 30px 40px;
+  width: 880px;
+  height: 100%;
+  /*background-color: #fff3cd;*/
+}
+
+.book {
+  display: flex;
+  align-items: center;
+}
+
+.book > img {
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+}
+
+.book > img:hover {
+  cursor: pointer;
+}
+
+.book > a {
+  color: #7b21dd;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 3em;
+}
+
+.edit-btn {
+  position: sticky;
+  left: 100%;
+  top: 200px;
+  width: 20px;
+  heigth: 20px;
+  padding: 5px;
+  transform: translate(200%, 0);
+}
+
+.edit-btn:hover {
+  cursor: pointer;
+  background-color: #2b282c;
+  border-radius: 5px;
+  transform: translate(200%, 0) scale(1.2);
+}
+
+

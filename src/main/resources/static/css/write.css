@@ -1,0 +1,110 @@
+.container-box {
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 20px;
+  position: relative;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.title-box {
+  width: 55%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.title-box > input {
+  width: 100%;
+  border: none;
+  font-size: 35px;
+  border-radius: 5px;
+}
+
+.title-box > input:hover {
+  background-color: #ececec;
+}
+
+.title-box > input:focus {
+  background-color: #ececec;
+}
+
+.title-box > input:focus {
+  outline: none;
+}
+
+.title-box > .book {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(0, -100%);
+  color: #7b21dd;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+.book > img {
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+}
+.book > img:hover {
+  cursor: pointer;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover {
+  background-color: #dcdcdc;
+  cursor: pointer;
+}
+
+button.save {
+  position: absolute;
+  width: 250px;
+  margin-right: 10px;
+  left: 0;  /*left: 110px;*/
+  bottom: 0;
+  /*transform: translate(0, -100%);*/
+}
+
+button.save > img {
+  width: 26px;
+  height: 26px;
+  margin-right: 10px;
+}
+
+button.cancel {
+  position: absolute;
+  width: 100px;
+  left: 0;
+  bottom: 0;
+  /*transform: translate(0, -100%);*/
+}
+
+button.cancel > img {
+  width: 26px;
+  height: 26px;
+}
+
+/*********************************************************/
+
+.content {
+  width: 100%;
+  flex-grow: 1;
+}

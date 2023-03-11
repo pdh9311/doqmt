@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment/head::toast-read(~{::title}, ~{::link})}">
+  <meta charset="UTF-8">
+  <title>DOQMT - read</title>
+  <link rel="stylesheet" href="/css/default.css">
+  <link rel="stylesheet" href="/css/read.css">
+  <link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+
+<div class="container">
+  <th:block th:replace="~{fragment/user::user}"></th:block>
+  <div class="read-box">
+    <img th:if="${isMySelf}" src="/img/wand-magic-sparkles-gold.svg" alt="편집" class="edit-btn">
+    <div class="book">
+      <img src="/img/book.svg" alt="카테고리 이미지" th:onclick="|location.href='@{/@{username}/docs(username=${username}, book=${bookId})}'|">
+      <a th:href="@{/@{username}/docs(username=${username}, book=${bookId})}" th:text="${docReadDto.book}"></a>
+    </div>
+    <h1 class="title" th:text="${docReadDto.title}">TITLE</h1>
+    <div id="viewer"></div>
+  </div>
+</div>
+
+
+<script th:inline="javascript">
+  const content = [[${docReadDto.content}]];
+  const username = [[${username}]];
+  const bookId = [[${bookId}]];
+  const docId = [[${docId}]];
+
+  const $editBtn = document.querySelector('.edit-btn');
+
+  $editBtn.addEventListener('click', () => {
+    location.href=`http://localhost:8080/@${username}/doc/edit?book=${bookId}&doc=${docId}`;
+  });
+</script>
+<script src="/js/user.js"></script>
+<script src="/js/toast-read.js"></script>
+</body>
+</html>

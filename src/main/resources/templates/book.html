@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>DOQMT - book</title>
+  <link rel="stylesheet" href="/css/default.css">
+  <link rel="stylesheet" href="/css/book.css">
+  <link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+<div class="container">
+  <th:block th:replace="~{fragment/user::user}"></th:block>
+
+  <div class="book-outer-box">
+
+    <h1 class="username-title" th:text="${username}">Username</h1>
+    <div class="book-new-name">
+      <input th:if="${isMySelf}" type="text" placeholder="+ Add book">
+    </div>
+
+    <section class="book-box">
+      <div class="book" th:each="book : ${books}">
+        <div class="book-inner-box">
+          <img class="book-image" src="/img/book.svg" alt="카테고리 이미지">
+          <input class="book-name" type="text" th:value="${book.name?:'value'}" readonly>
+          <span><input class="book-id" type="hidden" th:value="${book.id}" readonly>
+                <input class="book-idx" type="hidden" th:value="${book.idx}" readonly></span>
+        </div>
+        <img class="book-edit" th:if="${isMySelf}" src="/img/wand-magic-sparkles.svg" alt="카테고리 이름 편집">
+        <img class="book-del" th:if="${isMySelf}" src="/img/trash.svg" alt="카테고리 삭제">
+      </div>
+    </section>
+
+  </div>
+</div>
+<script th:inline="javascript">
+  const username = [[${username}]];
+</script>
+<script src="/js/user.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/book.js"></script>
+</body>
+</html>

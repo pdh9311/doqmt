@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>DOQMT - sign in</title>
+  <link rel="stylesheet" href="/css/default.css">
+  <link rel="stylesheet" href="/css/signin.css">
+  <link rel="stylesheet" href="/css/success-fail.css">
+</head>
+
+<body>
+
+<div class="container">
+  <nav>
+    <a href="/"><img class="small-logo" src="/img/logo.svg" alt="작은 로고"></a>
+    <a class="sign-btn" href="/signup">Sign Up</a>
+  </nav>
+  <form th:action th:object="${signin}" method="post">
+
+    <div class="login-outer-box">
+      <div class="login-inner-box">
+        <div class="logo-box"><a href="/"><img class="small-logo" src="/img/logo.svg" alt="작은 로고"></a></div>
+        <div class="welcome">Welcome</div>
+
+        <div class="login-fail">
+          <div th:if="${#fields.hasGlobalErrors()}">
+            <div class="login-fail-color" th:each="err : ${#fields.globalErrors()}" th:text="${err}"></div>
+          </div>
+        </div>
+
+        <div class="email-box">
+          <input id="email" type="text" th:field="*{email}">
+          <label class="input-label" for="email">Email address</label>
+        </div>
+
+        <div class="password-box">
+          <input id="password" type="password" th:field="*{password}">
+          <label class="input-label" for="password">Password</label>
+          <span><img src="/img/eye.svg" alt="비밀번호 확인"></span>
+        </div>
+
+        <a href="#">Forgot Password?</a>
+        <button>Continue</button>
+      </div>
+    </div>
+  </form>
+
+</div>
+<script src="/js/signin.js"></script>
+</body>
+
+</html>

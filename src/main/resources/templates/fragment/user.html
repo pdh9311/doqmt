@@ -1,0 +1,21 @@
+<th:block th:fragment="user">
+  <div th:if="${member != null}" class="user-box">
+    <img th:if="${member.profileImage == null}" src="/img/user.svg" alt="유저 프로필">
+    <img th:if="${member.profileImage != null}" th:src="@{${member.profileImage}}" alt="유저 프로필">
+    <span class="username" th:text="${member.username}">Username</span>
+    <span>▼</span>
+  </div>
+  <div th:if="${member != null}" class="user-click-box">
+    <a th:href="@{/@{username}(username=${member.username})}">Home</a>
+    <a th:href="@{/@{username}/profile/setting(username=${member.username})}">Account Settings</a>
+    <a class="trashBtn" th:href="@{/@{username}/trash(username=${member.username})}">Trash</a>
+    <a class="signout" href="/signout">Sign out</a>
+  </div>
+
+  <nav th:if="${member == null}" >
+    <ul class="sign">
+      <li><a href="/signin">Sign In</a></li>
+      <li><a href="/signup">Sign Up</a></li>
+    </ul>
+  </nav>
+</th:block>

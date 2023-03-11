@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment/head::toastui_write(~{::title},~{::link})}">
+  <meta charset="UTF-8">
+  <title>DOQMT - write</title>
+  <link rel="stylesheet" href="/css/default.css">
+  <link rel="stylesheet" href="/css/write.css">
+  <link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+<div class="container-box">
+  <th:block th:replace="~{fragment/user::user}"></th:block>
+  <div class="container">
+    <div class="title-box">
+      <input class="title" type="text" placeholder="TITLE">
+      <div class="book">
+        <img src="/img/book.svg" alt="카테고리 이미지" th:onclick="|location.href='@{/@{username}/docs(username=${username}, book=${bookId})}'|">
+        <a th:href="@{/@{username}/docs(username=${username}, book=${bookId})}" th:text="${bookName}"></a>
+      </div>
+    </div>
+    <div class="content">
+      <div id="editor"></div>
+    </div>
+    <!--<button class="cancel" th:onclick="|location.href='@{/@{username}/docs(username=${username}, book=${bookId})}'|">
+      <img src="/img/circle-xmark.svg" alt="취소"></button>-->
+    <button class="save"><img src="/img/save.svg" alt="저장"> Save</button>
+  </div>
+
+</div>
+<script src="/js/user.js"></script>
+<script src="/js/toast-write.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script th:inline="javascript">
+  const username = [[${username}]];
+  const bookId = [[${bookId}]];
+</script>
+<script src="/js/write.js"></script>
+</body>
+</html>

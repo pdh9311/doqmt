@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment/head::toastui_write(~{::title},~{::link})}">
+  <meta charset="UTF-8">
+  <title>DOQMT - write</title>
+  <link rel="stylesheet" href="/css/default.css">
+  <link rel="stylesheet" href="/css/write.css">
+  <link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+
+<div class="container-box">
+  <th:block th:replace="~{fragment/user::user}"></th:block>
+
+  <div class="container">
+    <div class="title-box">
+      <input class="title" type="text" placeholder="TITLE">
+      <span class="book" th:text="${bookName}"></span>
+    </div>
+    <div class="content">
+      <div id="editor"></div>
+    </div>
+    <button class="cancel" th:onclick="|location.href='@{/@{username}/docs(username=${username}, book=${bookId})}'|"><img src="/img/circle-xmark.svg" alt="취소"></button>
+    <button class="save"><img src="/img/save.svg" alt="저장"> Save</button>
+  </div>
+
+</div>
+<script src="/js/user.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script th:inline="javascript">
+  const username = [[${username}]];
+  const bookId = [[${bookId}]];
+  const docId = [[${docId}]];
+  const title = [[${docReadDto.title}]];
+  const content = [[${docReadDto.content}]];
+</script>
+<script src="/js/toast-edit.js"></script>
+<script src="/js/edit.js"></script>
+</body>
+</html>

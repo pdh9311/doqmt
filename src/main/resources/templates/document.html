@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>DOQMT - document</title>
+  <link rel="stylesheet" href="/css/default.css">
+  <link rel="stylesheet" href="/css/document.css">
+  <link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+<div class="container">
+  <th:block th:replace="~{fragment/user::user}"></th:block>
+
+  <div class="document-outer-box">
+    <img class="home" src="/img/house-user.svg" alt="홈 이동" th:onclick="|location.href='@{/@{username}(username=${username})}'|">
+    <h1 th:text="${bookName}">book</h1>
+    <div class="document-add-box">
+      <button th:if="${isMySelf}" class="document-add-btn" th:onclick="|location.href='@{/@{username}/doc/write(username=${username}, book=${bookId})}'|">
+        + Add Document
+      </button>
+    </div>
+
+    <section class="document-box">
+      <div class="document" th:each="document : ${documents}">
+        <div class="document-inner-box">
+          <img class="document-image" src="/img/page.svg" alt="문서 이미지">
+          <input class="document-name" type="text" th:value="${document.title?:'Enum'}" readonly>
+          <span><input class="document-id" type="hidden" th:value="${document.id}" readonly>
+                <input class="document-idx" type="hidden" th:value="${document.idx}" readonly></span>
+        </div>
+        <img class="document-edit" th:if="${isMySelf}" src="/img/wand-magic-sparkles.svg" alt="문서 이름 편집">
+        <img class="document-del" th:if="${isMySelf}" src="/img/trash.svg" alt="문서 삭제">
+      </div>
+    </section>
+
+  </div>
+</div>
+<script src="/js/user.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script th:inline="javascript">
+  const username = [[${username}]];
+  const bookId = [[${bookId}]];
+</script>
+<script src="/js/document.js"></script>
+</body>
+</html>

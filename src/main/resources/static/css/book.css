@@ -1,0 +1,105 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /*background-color: #fff3cd;*/
+  position: relative;
+}
+
+.book-outer-box {
+  box-sizing: border-box;
+  padding: 30px 40px;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  /*background-color: #e5c7ca;*/
+}
+
+.username-title {
+  color: #6f42c1;
+}
+
+.book-new-name {
+  display: flex;
+  align-items: center;
+  height: 22px;
+  margin: 10px 0;
+}
+
+.book-new-name > input {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+.book-new-name > input:focus {
+  outline: none;
+  background-color: #ececec;
+}
+
+.book-box {
+  flex-grow: 1;
+  /*padding: 10px;*/
+  display: flex;
+  flex-direction: column;
+  border-radius:5px;
+}
+
+.book {
+  width: 100%;
+  height: 20px;
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  border-radius:5px;
+}
+
+.book-inner-box {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  border-radius: 5px;
+  padding: 5px 0;
+}
+
+img.book-image {
+  margin: 0 10px;
+}
+
+input.book-name {
+  height: 100%;
+  border: none;
+  flex-grow: 1;
+}
+
+input.book-name:focus {
+  outline: none;
+}
+
+img.book-edit {
+  margin: 0 10px;
+  padding: 2px;
+}
+
+img.book-edit:hover,
+img.book-del:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+img.book-del {
+  margin: 0 10px 0 0;
+  padding: 2px;
+}
+
+/***************************************************/
+
+img {
+  width: 22px;
+  height: 22px;
+}
+
+
+

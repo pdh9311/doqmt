@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>DOQMT - home</title>
+  <link rel="stylesheet" href="/css/default.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/user.css">
+</head>
+
+<body>
+<div class="container">
+
+  <th:block th:replace="~{fragment/user::user}"></th:block>
+  <div class="big-logo-box">
+    <img th:if="${member == null}" class="big-logo" src="/img/logo.svg" alt="로고">
+    <img th:if="${member != null}" th:onclick="|location.href='@{/@{username}(username=${member.username})}'|" class="big-logo go-member" src="/img/logo.svg" alt="로고">
+  </div>
+  <span class="document">Document</span>
+</div>
+
+<script src="/js/user.js"></script>
+</body>
+</html>

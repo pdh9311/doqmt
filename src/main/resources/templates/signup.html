@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>DOQMT - sign up</title>
+  <link rel="stylesheet" href="/css/default.css">
+  <link rel="stylesheet" href="/css/signup.css">
+  <link rel="stylesheet" href="/css/success-fail.css">
+</head>
+<body>
+
+<div class="container">
+
+  <nav>
+    <a href="/"><img class="small-logo" src="/img/logo.svg" alt="작은 로고"></a>
+    <a class="sign-btn" href="/signin">Sign In</a>
+  </nav>
+
+  <a href="/"><img class="small-logo" src="/img/logo.svg" alt="작은 로고"></a>
+
+  <form th:action th:object="${signUp}" method="post">
+    <div class="join-outer-box">
+      <div class="join-inner-box">
+        <div class="join-box">
+
+          <h2>Create an Account</h2>
+          <span>Already hav an account? <a href="/signin">Sign In</a></span>
+
+          <div class="username-box">
+            <input id="username" type="text" th:field="*{username}">
+            <label class="input-label" for="username">Username</label>
+            <span class="username-status font-fail"></span>
+          </div>
+
+          <div class="email-box">
+            <input id="email" type="email" th:field="*{email}">
+            <label class="input-label" for="email">Email</label>
+            <button>Send</button>
+            <span class="email-status font-fail"></span>
+          </div>
+
+          <div class="email-check-box">
+            <input id="email-check" type="text" placeholder="Please check the code in your email.">
+            <button>Check</button>
+            <span class="email-check-status font-fail"></span>
+          </div>
+
+          <div class="password-box">
+            <input id="password" type="password" th:field="*{password}">
+            <label class="input-label" for="password">Password</label>
+            <button><img src="/img/eye.svg" alt="비밀번호 확인"></button>
+            <span class="password-status font-fail"></span>
+          </div>
+
+          <button class="signup-btn">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/signup.js"></script>
+</body>
+</html>
