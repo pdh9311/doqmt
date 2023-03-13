@@ -7,14 +7,14 @@ const documentWrite = (event) => {
   if ($title.value !== '') {
     const content = editor.getMarkdown();
     axios
-        .put(`http://3.35.14.80:8080/@${username}/doc/edit`, {   // 문서 저장 요청 url
+        .put(`http://43.200.252.187:8080/@${username}/doc/edit`, {   // 문서 저장 요청 url
           docId: docId,
           title: $title.value,
           content: content,
         })
         .then((response) => {
           const data = response.data;
-          location.replace(`http://3.35.14.80:8080/@${username}/doc/read?book=${bookId}&doc=${docId}`);  // 작성된 문서 보기 페이지로 이동
+          location.replace(`http://43.200.252.187:8080/@${username}/doc/read?book=${bookId}&doc=${docId}`);  // 작성된 문서 보기 페이지로 이동
         })
         .catch((error) => {
           console.log(error);

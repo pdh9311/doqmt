@@ -9,8 +9,8 @@ spring:
 
   servlet:
     multipart:
-      max-file-size: 20MB
-      max-request-size: 20MB
+      max-file-size: 512MB
+      max-request-size: 512MB
 
   messages:
     basename: errors

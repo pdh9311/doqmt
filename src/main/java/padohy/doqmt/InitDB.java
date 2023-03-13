@@ -9,7 +9,7 @@ import padohy.doqmt.repository.BookRepository;
 import padohy.doqmt.repository.DocumentRepository;
 import padohy.doqmt.repository.MemberRepository;
 
-//@Component
+@Component
 @RequiredArgsConstructor
 public class InitDB {
 
@@ -19,6 +19,12 @@ public class InitDB {
 
   @PostConstruct
   public void initDB() {
+    Member member = Member.builder()
+        .username("padohy")
+        .email("padohy@gmail.com")
+        .password(Encryption.sha512("qwe123!@#"))
+        .build();
+    memberRepository.save(member);
   }
 
 }

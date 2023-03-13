@@ -24,13 +24,7 @@ public class MemberSession {
         .profileImage(member.getProfileImage())
         .build();
   }
-
-  public void updateProfileImage(String filename) {
-    profileImage = new StringBuilder()
-        .append("/profile/")
-        .append(username)
-        .append("/")
-        .append(filename)
-        .toString();
+  public void updateProfileImage(String dataUrl) {
+    profileImage = dataUrl;
   }
 }

@@ -1,9 +1,6 @@
 package padohy.doqmt.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import padohy.doqmt.dto.SignUpForm;
 import padohy.doqmt.encryption.Encryption;
@@ -26,6 +23,7 @@ public class Member extends BaseTime {
 
   private String password;
 
+  @Lob
   private String profileImage;
 
   public static Member of(SignUpForm form) {
@@ -44,12 +42,7 @@ public class Member extends BaseTime {
     username = newUsername;
   }
 
-  public void updateProfileImage(String savedFilename) {
-    profileImage = new StringBuilder()
-        .append("/profile/")
-        .append(username)
-        .append("/")
-        .append(savedFilename)
-        .toString();
+  public void updateProfileImage(String imageDataUrl) {
+    profileImage = imageDataUrl;
   }
 }

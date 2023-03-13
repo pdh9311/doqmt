@@ -12,9 +12,7 @@ import padohy.doqmt.dto.ChangePwReqDto;
 import padohy.doqmt.dto.ProfileDto;
 import padohy.doqmt.service.MemberService;
 import padohy.doqmt.session.MemberSession;
-import padohy.doqmt.utils.ImageConverter;
 
-import java.io.File;
 import java.util.Map;
 
 @Slf4j
@@ -68,12 +66,14 @@ public class MemberController {
       @PathVariable("id") Long memberId,
       @RequestBody MultipartFile file,
       HttpSession session) {
-    File savedFile = memberService.updateProfileImage(memberId, file);
-    ImageConverter imageConverter = new ImageConverter(savedFile);
-    memberSession.updateProfileImage(savedFile.getName());
+    
+    String imageDataUrl = memberService.updateProfileImage(memberId, file);
+    memberSession.updateProfileImage(imageDataUrl);
+
     session.setAttribute(SessionConst.MEMBER_SESSION, memberSession);
     log.info("member = {}", memberSession);
-    return imageConverter.getDataUrl();
+
+    return memberSession.getProfileImage();
   }
 
 

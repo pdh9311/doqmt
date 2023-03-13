@@ -2,11 +2,10 @@ package padohy.doqmt.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.FileUtils;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-import padohy.doqmt.constant.PathConst;
 import padohy.doqmt.domain.Member;
 import padohy.doqmt.dto.ChangePwReqDto;
 import padohy.doqmt.dto.ProfileDto;
@@ -16,10 +15,7 @@ import padohy.doqmt.encryption.Encryption;
 import padohy.doqmt.repository.MemberRepository;
 import padohy.doqmt.session.MemberSession;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Optional;
 
 @Slf4j
@@ -87,60 +83,23 @@ public class MemberService {
     return member.getUsername();
   }
 
-  public File updateProfileImage(Long memberId, MultipartFile file) {
+  public String updateProfileImage(Long memberId, MultipartFile file) {
     Member member = memberRepository.findById(memberId).get();
 
-    String originalFilename = file.getOriginalFilename();
-    StringBuilder savedFilename = __createFilename(originalFilename);
-
-    StringBuilder dirPath = __createFileDirPath(member.getUsername());
-    __deleteDirectory(dirPath);
-    __createDir(dirPath);
-    __saveFile(file, dirPath, savedFilename.toString());
-
-    member.updateProfileImage(savedFilename.toString());
-    return new File(dirPath.toString(), savedFilename.toString());
-  }
-
-  private static void __deleteDirectory(StringBuilder dirPath) {
     try {
-      FileUtils.deleteDirectory(new File(dirPath.toString()));
+      byte[] fileBytes = file.getInputStream().readAllBytes();
+      String base64String = new String(Base64.encodeBase64String(fileBytes));
+      String imageDataUrl = new StringBuilder()
+          .append("data:")
+          .append(file.getContentType())
+          .append(";base64,")
+          .append(base64String)
+          .toString();
+      member.updateProfileImage(imageDataUrl);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
+    return member.getProfileImage();
   }
 
-  private static void __createDir(StringBuilder dirPath) {
-    try {
-      Files.createDirectories(Paths.get(dirPath.toString()));
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
-  }
-
-  private static StringBuilder __createFilename(String originalFilename) {
-    return new StringBuilder()
-        .append(System.currentTimeMillis()).append("_").append(originalFilename);
-  }
-
-  private static StringBuilder __createFileDirPath(String username) {
-    return new StringBuilder()
-        .append(PathConst.PROJECT_PATH)
-        .append(File.separator).append("src")
-        .append(File.separator).append("main")
-        .append(File.separator).append("resources")
-        .append(File.separator).append("static")
-        .append(File.separator).append("profile")
-        .append(File.separator).append(username);
-  }
-
-  private static void __saveFile(MultipartFile file, StringBuilder dirPath, String filename) {
-    try {
-      file.transferTo(new File(dirPath.toString(), filename));
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    } catch (IllegalStateException e) {
-      throw new RuntimeException(e);
-    }
-  }
 }
