@@ -21,7 +21,7 @@ const bookMouseout = (bookInner, bookInput) => () => {
 };
 
 const bookClick = (username, bookName, bookId) => () => {
-  location.href = `http://43.200.252.187:8080/@${username}/docs?book=${bookId}`;
+  location.href = `http://localhost:8080/@${username}/docs?book=${bookId}`;
 
 };
 
@@ -29,8 +29,8 @@ const bookKeyup = (bookInput, bookId) => (e) => {
   if (e.keyCode === 13) {     // Enter
     // 카테고리명 변경 요청
     axios
-        .patch(`http://43.200.252.187:8080/@${username}/book/name/${bookId}`, {
-          "name" : bookInput.value,
+        .patch(`http://localhost:8080/@${username}/book/name/${bookId}`, {
+          name : bookInput.value,
         })
         .then((response) => {
           const data = response.data;
@@ -45,8 +45,8 @@ const bookKeyup = (bookInput, bookId) => (e) => {
 const bookFocusout = (bookInput, bookId) => (e) => {
   // 카테고리명 변경 요청
   axios
-      .patch(`http://43.200.252.187:8080/@${username}/book/name/${bookId}`, {
-        "name" : bookInput.value,
+      .patch(`http://localhost:8080/@${username}/book/name/${bookId}`, {
+        name : bookInput.value,
       })
       .then((response) => {
         const data = response.data;
@@ -66,12 +66,12 @@ const bookEditClick = (bookInput) => () => {
 const bookDelClick = (book, bookId) => () => {
   // 카테고리 삭제
   axios
-      .patch(`http://43.200.252.187:8080/@${username}/book/delete/${bookId}`)
+      .patch(`http://localhost:8080/@${username}/book/delete/${bookId}`)
       .then((response) => {
         const data = response.data;
         if (response.data === 0) {
           axios
-              .delete(`http://43.200.252.187:8080/@${username}/book/${bookId}`)
+              .delete(`http://localhost:8080/@${username}/book/${bookId}`)
               .then((response) => {
                 const data = response.data;
               })
@@ -164,7 +164,7 @@ if ($addbookName !== null) {
     if (e.keyCode === 13 && $addbookName.value !== '') {
       // 카테고리 저장
       axios
-          .post(`http://43.200.252.187:8080/@${username}/book/add`, {
+          .post(`http://localhost:8080/@${username}/book/add`, {
             "bookName": $addbookName.value,
           })
           .then((response) => {

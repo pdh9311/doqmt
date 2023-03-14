@@ -13,7 +13,7 @@ import padohy.doqmt.encryption.Encryption;
 public class Member extends BaseTime {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "member_id")
   private Long id;
 
@@ -24,6 +24,7 @@ public class Member extends BaseTime {
   private String password;
 
   @Lob
+  @Column(columnDefinition = "LONGTEXT")
   private String profileImage;
 
   public static Member of(SignUpForm form) {
@@ -45,4 +46,5 @@ public class Member extends BaseTime {
   public void updateProfileImage(String imageDataUrl) {
     profileImage = imageDataUrl;
   }
+
 }

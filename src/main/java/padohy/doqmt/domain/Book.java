@@ -12,7 +12,8 @@ import java.util.List;
 @Builder
 public class Book extends BaseTime {
 
-  @Id @GeneratedValue
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "book_id")
   private Long id;
 

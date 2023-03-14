@@ -10,6 +10,13 @@ const $passwordCheck = document.querySelector('.password-box > span');
 const $passwordCheckImage = document.querySelector('.password-box > span > img');
 let pw = true;
 
+$emailBox.addEventListener('input', () => {
+  if (!$emailLabel.classList.contains('label-move')) {
+    $emailLabel.classList.add('label-move');
+    $emailBox.classList.add('border-black');
+  }
+});
+
 $emailBox.addEventListener('focusin', () => {
   if (!$emailLabel.classList.contains('label-move')) {
     $emailLabel.classList.add('label-move');
@@ -21,6 +28,13 @@ $emailInput.addEventListener('focusout', () => {
   if ($emailInput.value === '') {
     $emailLabel.classList.remove('label-move');
     $emailBox.classList.remove('border-black');
+  }
+});
+
+$passwordBox.addEventListener('input', () => {
+  if (!$passwordLabel.classList.contains('label-move')) {
+    $passwordLabel.classList.add('label-move');
+    $passwordBox.classList.add('border-black');
   }
 });
 
@@ -48,20 +62,4 @@ $passwordCheck.addEventListener('click', () => {
     $passwordInput.type = 'password';
     pw = true;
   }
-});
-
-window.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => {
-    if ($emailInput.value !== '') {
-      $emailInput.focus();
-      if (!$emailLabel.classList.contains('label-move')) {
-        $emailLabel.classList.add('label-move');
-        $emailBox.classList.add('border-black');
-      }
-      if (!$passwordLabel.classList.contains('label-move')) {
-        $passwordLabel.classList.add('label-move');
-        $passwordBox.classList.add('border-black');
-      }
-    }
-  }, 1000);
 });

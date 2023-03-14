@@ -70,10 +70,21 @@ public class MemberService {
     Member member = memberRepository.findById(memberId)
         .filter(m -> m.getPassword().equals(Encryption.sha512(changePwReqDto.getCurrentPw())))
         .orElse(null);
+
     if (member == null) {
       return false;
     }
     member.changePassword(changePwReqDto.getNewPw());
+    return true;
+  }
+
+  public Boolean changePassword(String email, String newPassword) {
+    Optional<Member> optMember = memberRepository.findByEmail(email);
+    if (!optMember.isPresent()) {
+      return false;
+    }
+    Member member = optMember.get();
+    member.changePassword(newPassword);
     return true;
   }
 
@@ -102,4 +113,7 @@ public class MemberService {
     return member.getProfileImage();
   }
 
+  public void delete(Long memberId) {
+    memberRepository.deleteById(memberId);
+  }
 }

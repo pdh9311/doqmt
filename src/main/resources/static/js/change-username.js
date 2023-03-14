@@ -10,7 +10,7 @@ $usernameCheckBtn.addEventListener('click', () => {
   const newUsername = $newUsername.value;
   if (newUsername !== '' && usernameRegExp.test(newUsername)) {
     axios
-        .post(`http://43.200.252.187:8080/@${username}/check/username`, {
+        .post(`http://localhost:8080/@${username}/check/username`, {
           username: newUsername,
         })
         .then((response) => {
@@ -41,7 +41,7 @@ $changeUsernameBtn.addEventListener('click', () => {
   const newUsername = $newUsername.value;
   if (canChangeUsername === true) {
     axios
-        .patch(`http://43.200.252.187:8080/@${username}/username/${memberId}`, {
+        .patch(`http://localhost:8080/@${username}/username/${memberId}`, {
           username: newUsername,
         })
         .then((response) => {

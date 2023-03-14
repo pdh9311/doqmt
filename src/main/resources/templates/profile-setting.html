@@ -70,6 +70,12 @@
     <button class="change-password-btn">Change</button>
   </div>
 
+  <div class="delete-account-box">
+    <strong>Delete account</strong>
+    <p>You can't undo this action.</p>
+    <button class="delete-btn">Delete your account</button>
+  </div>
+
 </div>
 <script th:inline="javascript">
   const memberId = [[${member.id}]];
@@ -80,5 +86,6 @@
 <script src="/js/profile-image.js"></script>
 <script src="/js/change-username.js"></script>
 <script src="/js/change-password.js"></script>
+<script src="/js/delete-account.js"></script>
 </body>
 </html>

@@ -14,3 +14,11 @@
   /*color: #198754;*/
   color: #1cb36d;
 }
+
+.fill-success {
+  fill: #1cb36d;
+}
+
+.fill-fail {
+  fill: #dc3545;
+}

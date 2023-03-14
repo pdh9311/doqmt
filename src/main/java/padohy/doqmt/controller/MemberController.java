@@ -76,5 +76,14 @@ public class MemberController {
     return memberSession.getProfileImage();
   }
 
+  @DeleteMapping("/{id}")
+  @ResponseBody
+  public String deleteMember(@PathVariable("id") Long memberId,
+                             HttpSession session) {
+    memberService.delete(memberId);
+    session.invalidate();
+    return "bye";
+  }
+
 
 }

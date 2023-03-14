@@ -57,6 +57,12 @@ $usernameInput.addEventListener("focusin", () => {
     $usernameBox.classList.add("border-black");
   }
 });
+$usernameInput.addEventListener("input", () => {
+  if (!$usernameLabel.classList.contains("label-move")) {
+    $usernameLabel.classList.add("label-move");
+    $usernameBox.classList.add("border-black");
+  }
+});
 
 $usernameInput.addEventListener("focusout", () => {
   if ($usernameInput.value === "") {
@@ -64,7 +70,7 @@ $usernameInput.addEventListener("focusout", () => {
     $usernameBox.classList.remove("border-black");
   }
   axios
-    .post("http://43.200.252.187:8080/signup/check-username", {
+    .post("http://localhost:8080/signup/check-username", {
       username: $usernameInput.value,
     })
     .then((response) => {
@@ -108,6 +114,12 @@ $emailInput.addEventListener("focusin", () => {
     $emailBox.classList.add("border-black");
   }
 });
+$emailInput.addEventListener("input", () => {
+  if (!$emailLabel.classList.contains("label-move")) {
+    $emailLabel.classList.add("label-move");
+    $emailBox.classList.add("border-black");
+  }
+});
 
 $emailInput.addEventListener("focusout", () => {
   if ($emailInput.value === "") {
@@ -115,7 +127,7 @@ $emailInput.addEventListener("focusout", () => {
     $emailBox.classList.remove("border-black");
   }
   axios
-    .post("http://43.200.252.187:8080/signup/check-email", {
+    .post("http://localhost:8080/signup/check-email", {
       email: $emailInput.value,
     })
     .then((response) => {
@@ -158,6 +170,11 @@ $emailCheckInput.addEventListener("focusin", () => {
     $emailCheckBox.classList.add("border-black");
   }
 });
+$emailCheckInput.addEventListener("input", () => {
+  if (!$emailCheckBox.classList.contains("border-black")) {
+    $emailCheckBox.classList.add("border-black");
+  }
+});
 
 $emailCheckInput.addEventListener("focusout", () => {
   if ($emailCheckInput.value === "") {
@@ -172,6 +189,7 @@ const pwClick = () => {
   }
 };
 $passwordInput.addEventListener("focusin", pwClick);
+$passwordInput.addEventListener("input", pwClick);
 
 const pwFocusOut = () => {
   if ($passwordInput.value === "") {
@@ -224,7 +242,7 @@ $emailSendBtn.addEventListener("click", (e) => {
     $emailCheckBox.style.display = "flex";
 
     axios
-      .post("http://43.200.252.187:8080/signup/auth-email", {
+      .post("http://localhost:8080/auth-email", {
         email: $emailInput.value,
       })
       .then((response) => {

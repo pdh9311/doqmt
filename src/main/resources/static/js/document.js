@@ -17,15 +17,15 @@ const documentMouseout = (documentInner, documentInput) => () => {
 };
 
 const documentClick = (username, documentName, documentId) => () => {
-  location.href = `http://43.200.252.187:8080/@${username}/doc/read?book=${bookId}&doc=${documentId}`;
+  location.href = `http://localhost:8080/@${username}/doc/read?book=${bookId}&doc=${documentId}`;
 };
 
 const documentKeyup = (documentInput, documentId) => (e) => {
   if (e.keyCode === 13) {     // Enter
     // 문서명 변경 요청
     axios
-        .patch(`http://43.200.252.187:8080/@${username}/doc/title/${documentId}`, {
-          "title": documentInput.value,
+        .patch(`http://localhost:8080/@${username}/doc/title/${documentId}`, {
+          title: documentInput.value,
         })
         .then((response) => {
           const data = response.data;
@@ -40,8 +40,8 @@ const documentKeyup = (documentInput, documentId) => (e) => {
 const documentFocusout = (documentInput, documentId) => (e) => {
   // 문서명 변경 요청
   axios
-      .patch(`http://43.200.252.187:8080/@${username}/doc/title/${documentId}`, {
-        "title": documentInput.value,
+      .patch(`http://localhost:8080/@${username}/doc/title/${documentId}`, {
+        title: documentInput.value,
       })
       .then((response) => {
         const data = response.data;
@@ -63,7 +63,7 @@ const documentDelClick = (document, documentId) => () => {
   console.log(documentId);
   // 문서 삭제
   axios
-      .patch(`http://43.200.252.187:8080/@${username}/doc/delete/${documentId}`)
+      .patch(`http://localhost:8080/@${username}/doc/delete/${documentId}`)
       .then((response) => {
         const data = response.data;
       })

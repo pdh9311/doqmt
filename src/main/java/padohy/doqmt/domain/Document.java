@@ -10,7 +10,8 @@ import lombok.*;
 @Builder
 public class Document extends BaseTime {
 
-  @Id @GeneratedValue
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "document_id")
   private Long id;
 

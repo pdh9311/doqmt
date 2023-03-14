@@ -46,12 +46,6 @@ public class SignUpController {
     return memberService.dupChkUsername(usernameMap.get("username"));
   }
 
-  @PostMapping("/auth-email")
-  @ResponseBody
-  public String authEmail(@RequestBody Map<String, String> emailMap) {
-    return emailSenderService.authEmail(emailMap.get("email"));
-  }
-
   @PostMapping("/check-email")
   @ResponseBody
   public Boolean checkEmail(@RequestBody Map<String, String> emailMap) {
