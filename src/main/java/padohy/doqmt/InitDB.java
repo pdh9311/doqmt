@@ -3,8 +3,6 @@ package padohy.doqmt;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import padohy.doqmt.domain.Member;
-import padohy.doqmt.encryption.Encryption;
 import padohy.doqmt.repository.BookRepository;
 import padohy.doqmt.repository.DocumentRepository;
 import padohy.doqmt.repository.MemberRepository;
@@ -19,12 +17,12 @@ public class InitDB {
 
   @PostConstruct
   public void initDB() {
-    Member member = Member.builder()
+    /*Member member = Member.builder()
         .username("padohy")
         .email("padohy@gmail.com")
         .password(Encryption.sha512("qwe123!@#"))
         .build();
-    memberRepository.save(member);
+    memberRepository.save(member);*/
   }
 
 }
