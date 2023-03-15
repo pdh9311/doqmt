@@ -132,7 +132,7 @@ $continueBtn.addEventListener('click', () => {
     $comment.textContent = `Please check your email for the authentication code to reset your password. (${email})`;
     checkList.email = true;
     axios
-        .post('http://localhost:8080/auth-email', {
+        .post('http://doqmt.com/auth-email', {
           email: email,
         })
         .then((response) => {
@@ -158,14 +158,14 @@ $continueBtn.addEventListener('click', () => {
     $pwCheckSpan.textContent = 'Passwords do not match';
   } else if (checkList.newPw !== '' && checkList.newPw === checkList.againPw) {
     axios
-        .patch(`http://localhost:8080/reset-password`, {
+        .patch(`http://doqmt.com/reset-password`, {
           email: $emailInput.value,
           newPassword: $pwInput.value,
         })
         .then((response) => {
           const data = response.data;
           if (data === 'ok') {
-            location.replace('http://localhost:8080/signin');
+            location.replace('http://doqmt.com/signin');
           } else if (data === 'fail') {
             $pwCheckSpan.textContent = 'Email not found';
             $pwCheckSvg.classList.remove('fill-success');
