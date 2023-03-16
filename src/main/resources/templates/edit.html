@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragment/head::toastui_write(~{::title},~{::link})}">
   <meta charset="UTF-8">
-  <title>DOQMT - write</title>
+  <title>DOQMT - edit</title>
   <link rel="shortcut icon" href="/img/doqmt.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/default.css">
   <link rel="stylesheet" href="/css/write.css">
@@ -16,12 +16,18 @@
   <div class="container">
     <div class="title-box">
       <input class="title" type="text" placeholder="TITLE">
-      <span class="book" th:text="${bookName}"></span>
+      <div class="book">
+        <img src="/img/book.svg" alt="카테고리 이미지"
+             th:onclick="|location.href='@{/@{username}/docs(username=${username}, book=${bookId})}'|">
+        <a th:href="@{/@{username}/docs(username=${username}, book=${bookId})}" th:text="${bookName}"></a>
+      </div>
+
     </div>
     <div class="content">
       <div id="editor"></div>
     </div>
-    <button class="cancel" th:onclick="|location.href='@{/@{username}/docs(username=${username}, book=${bookId})}'|"><img src="/img/circle-xmark.svg" alt="취소"></button>
+    <button class="cancel" th:onclick="|location.href='@{/@{username}/docs(username=${username}, book=${bookId})}'|">
+      <img src="/img/circle-xmark.svg" alt="취소"></button>
     <button class="save"><img src="/img/save.svg" alt="저장"> Save</button>
   </div>
 

@@ -1,6 +1,6 @@
--- drop table if exists document;
--- drop table if exists book;
--- drop table if exists member;
+drop table if exists document;
+drop table if exists book;
+drop table if exists member;
 
 create table if not exists member (
     member_id     bigint       not null auto_increment,

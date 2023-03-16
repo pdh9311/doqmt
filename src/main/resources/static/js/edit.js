@@ -25,7 +25,6 @@ const documentWrite = (event) => {
 };
 
 $save.addEventListener('click', documentWrite);
-
 document.addEventListener('DOMContentLoaded', () => {
   $title.value = title;
 });
