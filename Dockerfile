@@ -1,4 +1,4 @@
-FROM opendjdk:17-jdk
+FROM openjdk:17-jdk
 
 ARG JAR_FILE=build/libs/*.jar
 
