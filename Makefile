@@ -42,12 +42,14 @@ exec-app :
 	docker compose exec application /bin/bash
 
 clean : down g_clean
+
+fclean : clean
 	docker compose down -v --rmi all
 	docker system prune --volumes --all --force
 	docker network prune --force
 	docker volume prune --force
 
-re : clean g_build
+re : fclean g_build
 	docker compose up -d --build --force-recreate
 
-.PHONY : g_build, g_clean, up, ps, down, logs, logsf, top, exec-db, exec-app, clean, re
+.PHONY : g_build, g_clean, up, ps, down, logs, logsf, top, exec-db, exec-app, clean, fclean, re
