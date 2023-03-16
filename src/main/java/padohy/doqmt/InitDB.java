@@ -17,12 +17,13 @@ public class InitDB {
 
   @PostConstruct
   public void initDB() {
-    /*Member member = Member.builder()
+
+  }
+
+}
+/*Member member = Member.builder()
         .username("padohy")
         .email("padohy@gmail.com")
         .password(Encryption.sha512("qwe123!@#"))
         .build();
     memberRepository.save(member);*/
-  }
-
-}
