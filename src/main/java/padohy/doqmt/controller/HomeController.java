@@ -18,6 +18,9 @@ public class HomeController {
   public String home(
       @SessionAttribute(name = SessionConst.MEMBER_SESSION, required = false) MemberSession memberSession,
       Model model) {
+    if (memberSession != null) {
+      return "redirect:/@" + memberSession.getUsername();
+    }
     model.addAttribute("member", memberSession);
     return "home";
   }
