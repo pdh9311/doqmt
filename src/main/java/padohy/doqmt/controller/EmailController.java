@@ -20,6 +20,7 @@ public class EmailController {
   @PostMapping("/auth-email")
   @ResponseBody
   public String authEmail(@RequestBody Map<String, String> emailMap) {
+    log.info("Send Email = {}", emailMap.get("email"));
     return emailSenderService.authEmail(emailMap.get("email"));
   }
 
