@@ -2,10 +2,12 @@ package padohy.doqmt.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FileUtils;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+import padohy.doqmt.constant.PathConst;
 import padohy.doqmt.domain.Member;
 import padohy.doqmt.dto.ChangePwReqDto;
 import padohy.doqmt.dto.ProfileDto;
@@ -15,6 +17,7 @@ import padohy.doqmt.encryption.Encryption;
 import padohy.doqmt.repository.MemberRepository;
 import padohy.doqmt.session.MemberSession;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -90,8 +93,20 @@ public class MemberService {
 
   public String changeUsername(Long memberId, String newUsername) {
     Member member = memberRepository.findById(memberId).get();
+    changeDirName(member.getUsername(), newUsername);
     member.changeUsername(newUsername);
     return member.getUsername();
+  }
+
+  private static void changeDirName(String originUsername, String newUsername) {
+    try {
+      File origin = FileUtils.getFile(__fileDirPath(originUsername).toString());
+      File after = FileUtils.getFile(__fileDirPath(newUsername).toString());
+
+      FileUtils.moveDirectory(origin, after);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   public String updateProfileImage(Long memberId, MultipartFile file) {
@@ -116,4 +131,16 @@ public class MemberService {
   public void delete(Long memberId) {
     memberRepository.deleteById(memberId);
   }
+
+  private static StringBuilder __fileDirPath(String username) {
+    return new StringBuilder()
+        .append(PathConst.PROJECT_PATH)
+        .append(File.separator).append("src")
+        .append(File.separator).append("main")
+        .append(File.separator).append("resources")
+        .append(File.separator).append("static")
+        .append(File.separator).append("docs")
+        .append(File.separator).append(username);
+  }
+
 }
