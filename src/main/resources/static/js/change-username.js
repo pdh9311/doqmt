@@ -3,6 +3,9 @@ const $newUsername = document.querySelector('.new-username-box > input');
 const $usernameCheckBtn = document.querySelector('.username-check')
 const $changeUsernameBtn = document.querySelector('.change-username-btn');
 const $usernameCheckResult = document.querySelector('.username-check-result');
+const $home = $userClickBox.querySelector('a:nth-child(1)');
+const $accountSettings = $userClickBox.querySelector('a:nth-child(2)');
+const $trash = $userClickBox.querySelector('a:nth-child(3)');
 
 let canChangeUsername = false;
 
@@ -47,7 +50,12 @@ $changeUsernameBtn.addEventListener('click', () => {
         .then((response) => {
           const data = response.data;
           console.log(data);
-          document.querySelector('.account-info > strong').textContent = data;
+          username = data;
+          document.querySelector('.account-info > strong').textContent = username;
+          $username.textContent = username;
+          $home.href = `http://doqmt.com/@${username}`;
+          $accountSettings.href = `http://doqmt.com/@${username}/profile/setting`;
+          $trash.href = `http://doqmt.com/@${username}/trash`;
         })
         .catch((error) => {
           console.error(error);

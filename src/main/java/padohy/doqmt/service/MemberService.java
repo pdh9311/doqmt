@@ -103,7 +103,9 @@ public class MemberService {
       File origin = FileUtils.getFile(__fileDirPath(originUsername).toString());
       File after = FileUtils.getFile(__fileDirPath(newUsername).toString());
 
-      FileUtils.moveDirectory(origin, after);
+      if (origin.exists()) {
+        FileUtils.moveDirectory(origin, after);
+      }
     } catch (IOException e) {
       throw new RuntimeException(e);
     }

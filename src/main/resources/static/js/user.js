@@ -1,5 +1,6 @@
 const $userBox = document.querySelector('.user-box');
 const $userClickBox = document.querySelector('.user-click-box');
+const $username = $userBox.querySelector('.username');
 let userClickBox = false;
 
 if ($userBox !== null) {

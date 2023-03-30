@@ -54,9 +54,13 @@ public class MemberController {
 
   @PatchMapping("/username/{id}")
   @ResponseBody
-  public String changeUsername(@PathVariable("id") Long memberId,
-                               @RequestBody Map<String, String> usernameMap) {
-    return memberService.changeUsername(memberId, usernameMap.get("username"));
+  public String changeUsername(
+      @SessionAttribute(name = SessionConst.MEMBER_SESSION, required = false) MemberSession memberSession,
+      @PathVariable("id") Long memberId,
+      @RequestBody Map<String, String> usernameMap) {
+    String newUsername = usernameMap.get("username");
+    memberSession.setUsername(newUsername);
+    return memberService.changeUsername(memberId, newUsername);
   }
 
   @PostMapping("/profile-image/{id}")
