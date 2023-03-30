@@ -1,12 +1,10 @@
 package padohy.doqmt.session;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 import padohy.doqmt.domain.Member;
 
 @Data
+@ToString(exclude = "profileImage")
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
 public class MemberSession {
