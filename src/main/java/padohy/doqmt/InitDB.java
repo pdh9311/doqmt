@@ -17,13 +17,30 @@ public class InitDB {
 
   @PostConstruct
   public void initDB() {
-
-  }
-
-}
-/*Member member = Member.builder()
+    /*
+    Member member = Member.builder()
         .username("padohy")
         .email("padohy@gmail.com")
         .password(Encryption.sha512("qwe123!@#"))
         .build();
-    memberRepository.save(member);*/
+    memberRepository.save(member);
+
+    Book book = Book.builder()
+        .name("Book")
+        .isDeleted(true)
+        .member(member)
+        .build();
+    bookRepository.save(book);
+
+    for (int i = 1; i <= 1000; i++) {
+      Document document = Document.builder()
+          .title("test" + i)
+          .isDeleted(true)
+          .book(book)
+          .build();
+      documentRepository.save(document);
+    }
+    */
+  }
+
+}

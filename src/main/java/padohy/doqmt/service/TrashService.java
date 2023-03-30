@@ -29,7 +29,7 @@ public class TrashService {
         .toList();
   }
 
-  public Integer deletedTotalCount(Long memberId, int offset, int limit) {
+  public Integer deletedTotalCount(Long memberId) {
     return documentRepository.findIsDeletedDocuments(memberId, true).size();
   }
 }

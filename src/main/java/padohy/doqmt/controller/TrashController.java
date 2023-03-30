@@ -32,10 +32,11 @@ public class TrashController {
       Model model) {
     int offset = (page - 1) * size;
     List<TrashDto> deletedDocs = trashService.deletedList(memberSession.getId(), offset, size);
-    Integer deletedTotalCount = trashService.deletedTotalCount(memberSession.getId(), offset, size);
-    Paging pg = new Paging(deletedTotalCount / size, page);
+    Integer deletedTotalCount = trashService.deletedTotalCount(memberSession.getId());
+    Paging pg = new Paging(deletedTotalCount / size + 1, page);
 
     log.info("member = {}", memberSession);
+    log.info("paging = {}", pg);
 
     model.addAttribute("member", memberSession);
     model.addAttribute("docs", deletedDocs);
