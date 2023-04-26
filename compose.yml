@@ -30,7 +30,7 @@ services:
       SPRING_DATASOURCE_USERNAME: doqmt
       SPRING_DATASOURCE_PASSWORD: 1234
       EMAIL: doqmt.0@gmail.com
-      PASSWORD: gxbajrpyrunmfkzq
+      PASSWORD: litkfscwqeqfpwbs
     volumes:
       - ./src/main/resources/static/docs:/src/main/resources/static/docs
     networks:
