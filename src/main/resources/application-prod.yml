@@ -1,5 +1,10 @@
 server:
-  port: 80
+  port: 443
+  ssl:
+    enabled: true
+    keyStore: classpath:keystore.p12
+    keyStorePassword: qwe123!@#
+    keyStoreType: PKCS12
 
 spring:
   datasource:
