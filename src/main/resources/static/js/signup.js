@@ -70,7 +70,7 @@ $usernameInput.addEventListener("focusout", () => {
     $usernameBox.classList.remove("border-black");
   }
   axios
-    .post("http://doqmt.com/signup/check-username", {
+    .post("https://doqmt.com/signup/check-username", {
       username: $usernameInput.value,
     })
     .then((response) => {
@@ -127,7 +127,7 @@ $emailInput.addEventListener("focusout", () => {
     $emailBox.classList.remove("border-black");
   }
   axios
-    .post("http://doqmt.com/signup/check-email", {
+    .post("https://doqmt.com/signup/check-email", {
       email: $emailInput.value,
     })
     .then((response) => {
@@ -242,7 +242,7 @@ $emailSendBtn.addEventListener("click", (e) => {
     $emailCheckBox.style.display = "flex";
 
     axios
-      .post("http://doqmt.com/auth-email", {
+      .post("https://doqmt.com/auth-email", {
         email: $emailInput.value,
       })
       .then((response) => {

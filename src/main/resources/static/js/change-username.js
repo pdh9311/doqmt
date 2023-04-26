@@ -13,7 +13,7 @@ $usernameCheckBtn.addEventListener('click', () => {
   const newUsername = $newUsername.value;
   if (newUsername !== '' && usernameRegExp.test(newUsername)) {
     axios
-        .post(`http://doqmt.com/@${username}/check/username`, {
+        .post(`https://doqmt.com/@${username}/check/username`, {
           username: newUsername,
         })
         .then((response) => {
@@ -44,7 +44,7 @@ $changeUsernameBtn.addEventListener('click', () => {
   const newUsername = $newUsername.value;
   if (canChangeUsername === true) {
     axios
-        .patch(`http://doqmt.com/@${username}/username/${memberId}`, {
+        .patch(`https://doqmt.com/@${username}/username/${memberId}`, {
           username: newUsername,
         })
         .then((response) => {
@@ -53,9 +53,9 @@ $changeUsernameBtn.addEventListener('click', () => {
           username = data;
           document.querySelector('.account-info > strong').textContent = username;
           $username.textContent = username;
-          $home.href = `http://doqmt.com/@${username}`;
-          $accountSettings.href = `http://doqmt.com/@${username}/profile/setting`;
-          $trash.href = `http://doqmt.com/@${username}/trash`;
+          $home.href = `https://doqmt.com/@${username}`;
+          $accountSettings.href = `https://doqmt.com/@${username}/profile/setting`;
+          $trash.href = `https://doqmt.com/@${username}/trash`;
         })
         .catch((error) => {
           console.error(error);

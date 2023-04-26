@@ -7,14 +7,14 @@ const documentWrite = (event) => {
   if ($title.value !== '') {
     const content = editor.getMarkdown();
     axios
-        .put(`http://doqmt.com/@${username}/doc/edit`, {   // 문서 저장 요청 url
+        .put(`https://doqmt.com/@${username}/doc/edit`, {   // 문서 저장 요청 url
           docId: docId,
           title: $title.value,
           content: content,
         })
         .then((response) => {
           const data = response.data;
-          location.replace(`http://doqmt.com/@${username}/doc/read?book=${bookId}&doc=${docId}`);  // 작성된 문서 보기 페이지로 이동
+          location.replace(`https://doqmt.com/@${username}/doc/read?book=${bookId}&doc=${docId}`);  // 작성된 문서 보기 페이지로 이동
         })
         .catch((error) => {
           console.log(error);

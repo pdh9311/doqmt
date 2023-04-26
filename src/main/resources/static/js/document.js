@@ -17,14 +17,14 @@ const documentMouseout = (documentInner, documentInput) => () => {
 };
 
 const documentClick = (username, documentName, documentId) => () => {
-  location.href = `http://doqmt.com/@${username}/doc/read?book=${bookId}&doc=${documentId}`;
+  location.href = `https://doqmt.com/@${username}/doc/read?book=${bookId}&doc=${documentId}`;
 };
 
 const documentKeyup = (documentInput, documentId) => (e) => {
   if (e.keyCode === 13) {     // Enter
     // 문서명 변경 요청
     axios
-        .patch(`http://doqmt.com/@${username}/doc/title/${documentId}`, {
+        .patch(`https://doqmt.com/@${username}/doc/title/${documentId}`, {
           title: documentInput.value,
         })
         .then((response) => {
@@ -40,7 +40,7 @@ const documentKeyup = (documentInput, documentId) => (e) => {
 const documentFocusout = (documentInput, documentId) => (e) => {
   // 문서명 변경 요청
   axios
-      .patch(`http://doqmt.com/@${username}/doc/title/${documentId}`, {
+      .patch(`https://doqmt.com/@${username}/doc/title/${documentId}`, {
         title: documentInput.value,
       })
       .then((response) => {
@@ -63,7 +63,7 @@ const documentDelClick = (document, documentId) => () => {
   console.log(documentId);
   // 문서 삭제
   axios
-      .patch(`http://doqmt.com/@${username}/doc/delete/${documentId}`)
+      .patch(`https://doqmt.com/@${username}/doc/delete/${documentId}`)
       .then((response) => {
         const data = response.data;
       })
