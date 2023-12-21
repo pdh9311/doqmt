@@ -4,11 +4,11 @@ $deleteAccountBtn.addEventListener('click', () => {
   const result = confirm('Are you sure you want to delete your account?');
   if (result === true) {
     axios
-        .delete(`https://doqmt.com/@${username}/${memberId}`)
+        .delete(`https://doqmt.gonetis.com/@${username}/${memberId}`)
         .then((response) => {
           const data = response.data;
           console.log(data);
-          location.replace('https://doqmt.com');
+          location.replace('https://doqmt.gonetis.com');
         })
         .catch((error) => {
           console.error(error);

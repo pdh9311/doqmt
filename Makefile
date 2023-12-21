@@ -20,23 +20,23 @@ down :
 	docker compose down
 
 logs-db:
-	docker compose logs database
+	docker compose logs db
 
 logs-app:
 	docker compose logs application
 
 flogs-db :
-	docker compose logs database -f
+	docker compose logs db -f
 
 flogs-app :
 	docker compose logs application -f
 
 top :
-	docker compose top database
+	docker compose top db
 	docker compose top application
 
 exec-db :
-	docker compose exec database /bin/bash
+	docker compose exec db /bin/bash
 
 exec-app :
 	docker compose exec application /bin/bash

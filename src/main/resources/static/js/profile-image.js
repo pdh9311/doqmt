@@ -7,7 +7,7 @@ $profileImage.addEventListener('change', () => {
   formData.append("file", $profileImage.files[0]);
 
   axios
-      .post(`https://doqmt.com/@${username}/profile-image/${memberId}`, formData)
+      .post(`https://doqmt.gonetis.com/@${username}/profile-image/${memberId}`, formData)
       .then((response) => {
         const data = response.data;
         $userFace.src = data;

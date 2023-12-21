@@ -163,7 +163,7 @@ $changePwBtn.addEventListener('click', () => {
       changePw.result[1] === true &&
       changePw.result[2] === true) {
     axios
-        .patch(`https://doqmt.com/@${username}/password/${memberId}`, {
+        .patch(`https://doqmt.gonetis.com/@${username}/password/${memberId}`, {
           currentPw: changePw.currentPw,
           newPw: changePw.newPw,
           againPw: changePw.againPw,
@@ -174,7 +174,7 @@ $changePwBtn.addEventListener('click', () => {
             $incorrect.style.display = 'flex';
           } else {
             // 로그 아웃됨.
-            location.href = 'https://doqmt.com';
+            location.href = 'https://doqmt.gonetis.com';
           }
         })
         .catch((error) => {

@@ -21,7 +21,7 @@ const bookMouseout = (bookInner, bookInput) => () => {
 };
 
 const bookClick = (username, bookName, bookId) => () => {
-  location.href = `https://doqmt.com/@${username}/docs?book=${bookId}`;
+  location.href = `https://doqmt.gonetis.com/@${username}/docs?book=${bookId}`;
 
 };
 
@@ -29,7 +29,7 @@ const bookKeyup = (bookInput, bookId) => (e) => {
   if (e.keyCode === 13) {     // Enter
     // 카테고리명 변경 요청
     axios
-        .patch(`https://doqmt.com/@${username}/book/name/${bookId}`, {
+        .patch(`https://doqmt.gonetis.com/@${username}/book/name/${bookId}`, {
           name : bookInput.value,
         })
         .then((response) => {
@@ -45,7 +45,7 @@ const bookKeyup = (bookInput, bookId) => (e) => {
 const bookFocusout = (bookInput, bookId) => (e) => {
   // 카테고리명 변경 요청
   axios
-      .patch(`https://doqmt.com/@${username}/book/name/${bookId}`, {
+      .patch(`https://doqmt.gonetis.com/@${username}/book/name/${bookId}`, {
         name : bookInput.value,
       })
       .then((response) => {
@@ -66,12 +66,12 @@ const bookEditClick = (bookInput) => () => {
 const bookDelClick = (book, bookId) => () => {
   // 카테고리 삭제
   axios
-      .patch(`https://doqmt.com/@${username}/book/delete/${bookId}`)
+      .patch(`https://doqmt.gonetis.com/@${username}/book/delete/${bookId}`)
       .then((response) => {
         const data = response.data;
         if (response.data === 0) {
           axios
-              .delete(`https://doqmt.com/@${username}/book/${bookId}`)
+              .delete(`https://doqmt.gonetis.com/@${username}/book/${bookId}`)
               .then((response) => {
                 const data = response.data;
               })
@@ -164,7 +164,7 @@ if ($addbookName !== null) {
     if (e.keyCode === 13 && $addbookName.value !== '') {
       // 카테고리 저장
       axios
-          .post(`https://doqmt.com/@${username}/book/add`, {
+          .post(`https://doqmt.gonetis.com/@${username}/book/add`, {
             "bookName": $addbookName.value,
           })
           .then((response) => {

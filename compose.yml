@@ -1,5 +1,5 @@
 services:
-  database:
+  db:
     image: mariadb
     restart: always
     environment:
@@ -19,18 +19,18 @@ services:
 
   application:
     depends_on:
-      - database
+      - db
     build: .
     restart: always
     ports:
       - 80:80
       - 443:443
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mariadb://database:3306/doqmt?useSSL=false
+      SPRING_DATASOURCE_URL: jdbc:mariadb://db:3306/doqmt?useSSL=false
       SPRING_DATASOURCE_USERNAME: doqmt
       SPRING_DATASOURCE_PASSWORD: 1234
-      EMAIL: doqmt.0@gmail.com
-      PASSWORD: litkfscwqeqfpwbs
+      EMAIL: padohy@gmail.com
+      PASSWORD: uthjijxdwmchtbdk
     volumes:
       - ./src/main/resources/static/docs:/src/main/resources/static/docs
     networks:
@@ -38,11 +38,11 @@ services:
 
   adminer:
     depends_on:
-      - database
+      - db
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - 13306:8080
     networks:
       - net
 
