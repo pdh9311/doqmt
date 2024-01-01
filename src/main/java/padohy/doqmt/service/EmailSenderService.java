@@ -20,10 +20,10 @@ public class EmailSenderService {
     simpleMailMessage.setFrom("padohy@gmail.com");
     simpleMailMessage.setTo(to);
     simpleMailMessage.setSubject("DOQMT 인증 코드 확인해주세요.");
-    simpleMailMessage.setText("" + uuid);
+    simpleMailMessage.setText(uuid.toString().substring(0, 6));
 
     mailSender.send(simpleMailMessage);
-    return uuid.toString();
+    return uuid.toString().substring(0, 6);
   }
 
 }
